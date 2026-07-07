@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECG Monitor — Smart Heart Health Monitoring</title>
+<meta name="description" content="AI powered ECG monitoring platform for real-time cardiac monitoring, abnormality detection and remote health analytics.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-heart">
+    <svg viewBox="0 0 24 24"><path d="M12 21s-6.7-4.35-9.3-8.1C.8 10.2 1.3 6.6 4.2 4.9c2.3-1.35 5-0.7 6.5 1.2C12.2 4.2 14.9 3.55 17.2 4.9c2.9 1.7 3.4 5.3 1.5 8C18.7 16.65 12 21 12 21z"/></svg>
+  </div>
+  <p>Initializing monitor…</p>
+</div>
+
+<div id="scroll-progress"></div>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="brand" href="#home">
+      <span class="brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 21s-6.7-4.35-9.3-8.1C.8 10.2 1.3 6.6 4.2 4.9c2.3-1.35 5-0.7 6.5 1.2C12.2 4.2 14.9 3.55 17.2 4.9c2.9 1.7 3.4 5.3 1.5 8C18.7 16.65 12 21 12 21z"/></svg>
+      </span>
+      <span class="brand-text">
+        <strong>ECG MONITOR</strong>
+        <small>Smart Heart Health Monitoring</small>
+      </span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#system">System</a></li>
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="dashboard.html" class="btn btn-primary nav-cta">Live Monitor <span>→</span></a>
+    <button id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="home" class="hero">
+  <canvas id="heroEcgBg"></canvas>
+  <div class="hero-inner">
+    <div class="hero-left" data-reveal>
+      <h1>ECG &amp; Cardiac<br><span class="grad-text">Monitoring System</span></h1>
+      <p class="hero-sub">An AI powered ECG monitoring platform that performs real-time cardiac monitoring, abnormality detection and remote health analytics.</p>
+
+      <div class="feature-mini-cards">
+        <div class="mini-card">
+          <span class="mini-icon"><svg viewBox="0 0 24 24"><polyline points="2,12 7,12 9,6 13,18 16,12 22,12"/></svg></span>
+          <div><strong>Real-time Monitoring</strong><small>Continuous ECG &amp; Pulse tracking</small></div>
+        </div>
+        <div class="mini-card">
+          <span class="mini-icon"><svg viewBox="0 0 24 24"><path d="M6 19a5 5 0 0 1-1-9.9 6 6 0 0 1 11.7-2A4.5 4.5 0 0 1 18 19H6z"/></svg></span>
+          <div><strong>Cloud Analytics</strong><small>Historical ECG records</small></div>
+        </div>
+        <div class="mini-card">
+          <span class="mini-icon"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>
+          <div><strong>Smart Alerts</strong><small>AI detects abnormal patterns</small></div>
+        </div>
+      </div>
+
+      <a href="dashboard.html" class="btn btn-primary btn-lg">View Live Dashboard <span>→</span></a>
+    </div>
+
+    <div class="hero-center" data-reveal>
+      <div class="device-wrap">
+        <div class="device-glow"></div>
+        <svg class="device-svg" viewBox="0 0 320 340" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="deviceBody" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#f3f6fb"/>
+              <stop offset="100%" stop-color="#c9d3e0"/>
+            </linearGradient>
+            <linearGradient id="screenGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#0b1633"/>
+              <stop offset="100%" stop-color="#030712"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="160" cy="300" rx="110" ry="14" fill="#000" opacity="0.35"/>
+          <rect x="35" y="70" width="230" height="150" rx="22" fill="url(#deviceBody)" stroke="#9fb0c4" stroke-width="1.5"/>
+          <rect x="55" y="90" width="140" height="70" rx="8" fill="url(#screenGrad)"/>
+          <polyline points="60,125 80,125 88,105 96,145 104,120 112,125 195,125" fill="none" stroke="#3ddc84" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="230" cy="100" r="7" fill="#2563EB"/>
+          <circle cx="230" cy="120" r="7" fill="#3B82F6"/>
+          <circle cx="230" cy="140" r="7" fill="#60A5FA"/>
+          <text x="65" y="180" font-family="Poppins, sans-serif" font-size="11" fill="#0B1633" font-weight="700">ECG MONITOR</text>
+          <rect x="150" y="55" width="6" height="18" rx="3" fill="#1f2937"/>
+          <line x1="35" y1="215" x2="20" y2="260" stroke="#22c55e" stroke-width="4" stroke-linecap="round"/>
+          <line x1="120" y1="220" x2="130" y2="270" stroke="#eab308" stroke-width="4" stroke-linecap="round"/>
+          <line x1="200" y1="220" x2="215" y2="268" stroke="#ef4444" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="16" cy="268" r="16" fill="#f8fafc" stroke="#22c55e" stroke-width="3"/>
+          <circle cx="133" cy="278" r="16" fill="#f8fafc" stroke="#eab308" stroke-width="3"/>
+          <circle cx="219" cy="276" r="16" fill="#f8fafc" stroke="#ef4444" stroke-width="3"/>
+        </svg>
+        <svg class="heart-outline" viewBox="0 0 200 200"><path d="M100 170S30 120 15 75C5 45 25 15 55 15c20 0 35 12 45 28 10-16 25-28 45-28 30 0 50 30 40 60-15 45-85 95-85 95z"/></svg>
+      </div>
+    </div>
+
+    <div class="hero-right" data-reveal>
+      <div class="dash-card glass">
+        <div class="dash-card-head">
+          <span>ECG Real-time Dashboard</span>
+          <span class="pill">Live</span>
+        </div>
+        <div class="dash-grid">
+          <div class="widget wide">
+            <div class="widget-label">Live ECG Wave</div>
+            <canvas id="ecgWave" height="90"></canvas>
+          </div>
+          <div class="widget">
+            <div class="widget-label">Heart Rate</div>
+            <div class="hr-value"><svg class="hr-heart" viewBox="0 0 24 24"><path d="M12 21s-6.7-4.35-9.3-8.1C.8 10.2 1.3 6.6 4.2 4.9c2.3-1.35 5-0.7 6.5 1.2C12.2 4.2 14.9 3.55 17.2 4.9c2.9 1.7 3.4 5.3 1.5 8C18.7 16.65 12 21 12 21z"/></svg><span id="hrNum">78</span><small>BPM</small></div>
+            <div class="status-ok">Normal</div>
+          </div>
+          <div class="widget">
+            <div class="widget-label">Pulse Wave</div>
+            <canvas id="pulseWave" height="60"></canvas>
+          </div>
+          <div class="widget">
+            <div class="widget-label">Signal Quality</div>
+            <div class="ring-wrap">
+              <svg viewBox="0 0 100 100" class="ring">
+                <circle cx="50" cy="50" r="42" class="ring-bg"/>
+                <circle cx="50" cy="50" r="42" class="ring-fg" id="sigRing"/>
+              </svg>
+              <div class="ring-text"><span id="sigNum">95</span>%</div>
+            </div>
+            <div class="status-ok">Good</div>
+          </div>
+          <div class="widget">
+            <div class="widget-label">Status</div>
+            <div class="status-live"><span class="dot"></span> Monitoring Active</div>
+            <small class="muted">Last updated <span id="lastUpdated">now</span></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- FEATURES -->
+<section id="features" class="section features">
+  <h2 class="section-title" data-reveal>Key Features</h2>
+  <div class="grid-4">
+    <div class="feature-card" data-reveal>
+      <div class="f-icon blue"><svg viewBox="0 0 24 24"><polyline points="2,12 7,12 9,6 13,18 16,12 22,12"/></svg></div>
+      <h3>Real-time ECG Acquisition</h3>
+      <p>Continuous signal capture with sub-second latency, streamed straight to your dashboard.</p>
+    </div>
+    <div class="feature-card" data-reveal>
+      <div class="f-icon blue"><svg viewBox="0 0 24 24"><path d="M6 19a5 5 0 0 1-1-9.9 6 6 0 0 1 11.7-2A4.5 4.5 0 0 1 18 19H6z"/></svg></div>
+      <h3>Cloud Analytics</h3>
+      <p>Every reading is stored and analyzed, so trends and history are always within reach.</p>
+    </div>
+    <div class="feature-card" data-reveal>
+      <div class="f-icon purple"><svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 0-4 4c0 1 .3 1.8.8 2.5A4 4 0 0 0 6 12a4 4 0 0 0 1 2.6A4 4 0 0 0 8 20h8a4 4 0 0 0 1-7.4A4 4 0 0 0 18 8.5c.5-.7.8-1.5.8-2.5a4 4 0 0 0-4-4"/></svg></div>
+      <h3>AI Detection</h3>
+      <p>Pattern recognition flags irregular rhythms the moment they appear in the waveform.</p>
+    </div>
+    <div class="feature-card" data-reveal>
+      <div class="f-icon red"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
+      <h3>Real-time Alerts</h3>
+      <p>Instant notifications the instant heart rate, signal, or rhythm falls out of range.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="system" class="section how">
+  <h2 class="section-title light" data-reveal>How It Works</h2>
+  <div class="steps">
+    <div class="step" data-reveal>
+      <div class="step-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></svg></div>
+      <strong>1. Patient</strong>
+      <p>ECG signal captured via chest electrodes</p>
+    </div>
+    <div class="arrow" aria-hidden="true">→</div>
+    <div class="step" data-reveal>
+      <div class="step-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg></div>
+      <strong>2. AI Engine</strong>
+      <p>Signal processed &amp; features extracted</p>
+    </div>
+    <div class="arrow" aria-hidden="true">→</div>
+    <div class="step" data-reveal>
+      <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M6 19a5 5 0 0 1-1-9.9 6 6 0 0 1 11.7-2A4.5 4.5 0 0 1 18 19H6z"/></svg></div>
+      <strong>3. Cloud Analytics</strong>
+      <p>Readings stored for historical trends</p>
+    </div>
+    <div class="arrow" aria-hidden="true">→</div>
+    <div class="step" data-reveal>
+      <div class="step-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
+      <strong>4. Dashboard</strong>
+      <p>Live monitoring &amp; instant alerts</p>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGIES -->
+<section class="tech-strip">
+  <h3>Technologies Used</h3>
+  <div class="tech-list">
+    <div class="tech-item"><span>React</span></div>
+    <div class="tech-item"><span>Node.js</span></div>
+    <div class="tech-item"><span>Express</span></div>
+    <div class="tech-item"><span>Python</span></div>
+    <div class="tech-item"><span>Machine Learning</span></div>
+    <div class="tech-item"><span>SQL</span></div>
+    <div class="tech-item"><span>Power BI</span></div>
+    <div class="tech-item"><span>Excel</span></div>
+    <div class="tech-item"><span>Tailwind CSS</span></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section about">
+  <h2 class="section-title light" data-reveal>About the System</h2>
+  <div class="timeline">
+    <div class="tl-item" data-reveal>
+      <div class="tl-dot"></div>
+      <div class="tl-content"><strong>Real-time Monitoring</strong><p>ECG and pulse are sampled continuously and streamed live without delay.</p></div>
+    </div>
+    <div class="tl-item" data-reveal>
+      <div class="tl-dot"></div>
+      <div class="tl-content"><strong>AI Anomaly Detection</strong><p>Models trained on cardiac waveforms flag irregular rhythms automatically.</p></div>
+    </div>
+    <div class="tl-item" data-reveal>
+      <div class="tl-dot"></div>
+      <div class="tl-content"><strong>Historical Trends</strong><p>Every session is logged, making long-term heart health easy to track.</p></div>
+    </div>
+    <div class="tl-item" data-reveal>
+      <div class="tl-dot"></div>
+      <div class="tl-content"><strong>Interactive Dashboards</strong><p>Clean, glanceable widgets put the metrics that matter front and center.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact">
+  <h2 class="section-title" data-reveal>Get in Touch</h2>
+  <form class="contact-card glass" id="contactForm" data-reveal>
+    <div class="field"><label>Name</label><input type="text" required placeholder="Your name"></div>
+    <div class="field"><label>Email</label><input type="email" required placeholder="you@example.com"></div>
+    <div class="field"><label>Message</label><textarea required placeholder="How can we help?"></textarea></div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <p class="form-note" id="formNote"></p>
+  </form>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="brand">
+      <span class="brand-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-6.7-4.35-9.3-8.1C.8 10.2 1.3 6.6 4.2 4.9c2.3-1.35 5-0.7 6.5 1.2C12.2 4.2 14.9 3.55 17.2 4.9c2.9 1.7 3.4 5.3 1.5 8C18.7 16.65 12 21 12 21z"/></svg></span>
+      <span class="brand-text"><strong>ECG MONITOR</strong><small>Smart Heart Health Monitoring</small></span>
+    </div>
+    <p>© 2026 ECG Monitor. Simulated data for demonstration purposes only — not a medical device.</p>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top">↑</button>
+
+<script src="app.js"></script>
+</body>
+</html>

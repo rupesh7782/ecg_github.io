@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Signal Lost | ECG Monitor</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  body{margin:0; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    background:radial-gradient(1000px 600px at 50% 20%, rgba(37,99,235,0.18), transparent 60%), #030712;
+    font-family:'Poppins',sans-serif; color:#fff; text-align:center; padding:20px;}
+  h1{font-size:96px; margin:0; background:linear-gradient(90deg,#2563EB,#60A5FA); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  p{color:#9ca3af; max-width:400px;}
+  canvas{width:260px; height:70px; margin:20px 0;}
+  a{margin-top:20px; display:inline-flex; padding:12px 24px; border-radius:999px; background:linear-gradient(135deg,#2563EB,#60A5FA); color:#fff; text-decoration:none; font-weight:600;}
+</style>
+</head>
+<body>
+  <h1>404</h1>
+  <canvas id="flatline"></canvas>
+  <p>Flatline — this page couldn't be found. The patient (page) may have been moved or never existed.</p>
+  <a href="index.html">Return to Dashboard</a>
+<script>
+const c = document.getElementById('flatline');
+c.width = 520; c.height = 140;
+const ctx = c.getContext('2d');
+let x = 0;
+function draw(){
+  ctx.clearRect(0,0,c.width,c.height);
+  ctx.beginPath();
+  ctx.strokeStyle = '#ef4444';
+  ctx.lineWidth = 3;
+  ctx.moveTo(0, 70);
+  ctx.lineTo(c.width, 70);
+  ctx.stroke();
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+</body>
+</html>
